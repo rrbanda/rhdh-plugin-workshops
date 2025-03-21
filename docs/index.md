@@ -1,6 +1,6 @@
 # Welcome to RHDH Plugin Workshops 🚀
 
-This site provides documentation for configuring and using various plugins in **Red Hat Developer Hub (RHDH)**.
+This site provides documentation for configuring and using various plugins in **Red Hat Developer Hub**.
 
 ## 📚 Available Guides
 
