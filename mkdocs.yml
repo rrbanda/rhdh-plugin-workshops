@@ -1,0 +1,9 @@
+site_name: RHDH Plugin Workshops
+nav:
+  - Home: index.md
+  - MTA Plugin:
+      - How To: mta/how_to.md
+  - Another Plugin:
+      - Guide: another-plugin/guide.md
+theme:
+  name: material
