@@ -1,9 +1,66 @@
 site_name: RHDH Plugin Workshops
+site_url: https://rrbanda.github.io/rhdh-plugin-workshops/
+site_description: Documentation for RHDH plugins, including MTA and more.
+site_author: RB
+
 nav:
   - Home: index.md
   - MTA Plugin:
+      - Overview: mta/index.md
       - How To: mta/how_to.md
+      - Troubleshooting: mta/troubleshooting.md
   - Another Plugin:
+      - Overview: another-plugin/index.md
       - Guide: another-plugin/guide.md
+
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: blue
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - content.code.annotate
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rrbanda
+  copyright: "© 2025 RHDH Plugin Workshops. All rights reserved."
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+  - awesome-pages
+
+extra_css:
+  - stylesheets/extra.css
