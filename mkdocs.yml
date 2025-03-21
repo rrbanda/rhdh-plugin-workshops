@@ -5,13 +5,14 @@ site_author: RB
 
 nav:
   - Home: index.md
-  - MTA Plugin:
-      - Overview: mta/index.md
-      - How To: mta/how_to.md
-      - Troubleshooting: mta/troubleshooting.md
-  - Another Plugin:
-      - Overview: another-plugin/index.md
-      - Guide: another-plugin/guide.md
+  - Plugins:
+      - MTA Plugin:
+          - Overview: mta/index.md
+          - How To: mta/how_to.md
+          - Troubleshooting: mta/troubleshooting.md
+      - Another Plugin:
+          - Overview: another-plugin/index.md
+          - Guide: another-plugin/guide.md
 
 theme:
   name: material
@@ -27,14 +28,16 @@ theme:
         icon: material/lightbulb
         name: Switch to light mode
   features:
-    - search.suggest
-    - search.highlight
-    - search.share
+    - navigation.tabs
     - navigation.instant
     - navigation.tracking
     - navigation.sections
+    - navigation.expand
     - navigation.top
     - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
 
 extra:
   social:
