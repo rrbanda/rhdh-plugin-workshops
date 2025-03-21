@@ -1,5 +1,5 @@
 
-# Guide: Configure and Test MTA Plugin in Red Hat Developer Hub (RHDH)
+# The following instructions will help configure and test MTA Plugin in Red Hat Developer Hub.
 
 ## Prerequisites
 
