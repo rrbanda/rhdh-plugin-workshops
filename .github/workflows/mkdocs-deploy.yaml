@@ -20,8 +20,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install MkDocs Material
-        run: pip install mkdocs-material
+      - name: Install MkDocs and Required Plugins
+        run: |
+          pip install mkdocs-material
+          pip install mkdocs-awesome-pages-plugin
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force
