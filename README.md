@@ -1,1 +1,1 @@
-# rhdh-plugin-workshops
+# Red Hat Developer Hub Plugins- How to guides 
