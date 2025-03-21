@@ -1,0 +1,1341 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for RHDH plugins, including MTA and more.">
+      
+      
+        <meta name="author" content="RB">
+      
+      
+        <link rel="canonical" href="https://rrbanda.github.io/rhdh-plugin-workshops/mta/how_to/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>How To - RHDH Plugin Workshops</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-following-instructions-will-help-configure-and-test-mta-plugin-in-red-hat-developer-hub" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RHDH Plugin Workshops" class="md-header__button md-logo" aria-label="RHDH Plugin Workshops" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RHDH Plugin Workshops
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How To
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Plugins
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RHDH Plugin Workshops" class="md-nav__button md-logo" aria-label="RHDH Plugin Workshops" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RHDH Plugin Workshops
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Plugins
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Plugins
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    MTA Plugin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            MTA Plugin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How To
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    How To
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-mta-on-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing MTA on OpenShift
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-rhdh-and-mta-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration: RHDH and MTA Plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mta-plugin-setup-script-for-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTA Plugin Setup Script for Keycloak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MTA Plugin Setup Script for Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-pluginsyaml-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic-plugins.yaml Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="dynamic-plugins.yaml Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure-your-plugin-list-includes-the-following-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensure your plugin list includes the following entries:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-mta-in-red-hat-developer-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using MTA in Red Hat Developer Hub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using MTA in Red Hat Developer Hub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-access-developer-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Access Developer Hub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-register-a-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Register a Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verify-template-in-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Verify Template in Catalog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-an-mta-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create an MTA Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-run-mta-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Run MTA Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-check-analysis-status-in-rhdh" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Check Analysis Status in RHDH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-confirm-in-mta-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Confirm in MTA Web Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-final-status-in-rhdh" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Final Status in RHDH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Another Plugin
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Another Plugin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../another-plugin/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../another-plugin/guide.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-mta-on-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing MTA on OpenShift
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-rhdh-and-mta-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration: RHDH and MTA Plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mta-plugin-setup-script-for-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTA Plugin Setup Script for Keycloak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MTA Plugin Setup Script for Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-pluginsyaml-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic-plugins.yaml Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="dynamic-plugins.yaml Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure-your-plugin-list-includes-the-following-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensure your plugin list includes the following entries:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-mta-in-red-hat-developer-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using MTA in Red Hat Developer Hub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using MTA in Red Hat Developer Hub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-access-developer-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Access Developer Hub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-register-a-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Register a Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verify-template-in-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Verify Template in Catalog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-an-mta-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create an MTA Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-run-mta-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Run MTA Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-check-analysis-status-in-rhdh" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Check Analysis Status in RHDH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-confirm-in-mta-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Confirm in MTA Web Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-final-status-in-rhdh" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Final Status in RHDH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="the-following-instructions-will-help-configure-and-test-mta-plugin-in-red-hat-developer-hub">The following instructions will help configure and test MTA Plugin in Red Hat Developer Hub.<a class="headerlink" href="#the-following-instructions-will-help-configure-and-test-mta-plugin-in-red-hat-developer-hub" title="Permanent link">&para;</a></h1>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you begin:</p>
+<ul>
+<li>Ensure <strong>RHDH</strong> is installed locally or on an OpenShift cluster.</li>
+<li><strong>Migration Toolkit for Applications (MTA)</strong> must be installed on the OpenShift cluster.</li>
+<li>Run the provided script to configure the MTA client in Keycloak.</li>
+</ul>
+<hr />
+<h2 id="installing-mta-on-openshift">Installing MTA on OpenShift<a class="headerlink" href="#installing-mta-on-openshift" title="Permanent link">&para;</a></h2>
+<p>Follow the official documentation for <strong>MTA 7.2</strong>:</p>
+<p>📚 <a href="https://docs.redhat.com/en/documentation/migration_toolkit_for_applications/7.2/">Migration Toolkit for Applications 7.2 Documentation</a></p>
+<p>🔧 <a href="https://docs.redhat.com/en/documentation/migration_toolkit_for_applications/7.2/html/user_interface_guide/index">User Interface Guide (includes operator installation steps)</a></p>
+<hr />
+<h2 id="configuration-rhdh-and-mta-plugin">Configuration: RHDH and MTA Plugin<a class="headerlink" href="#configuration-rhdh-and-mta-plugin" title="Permanent link">&para;</a></h2>
+<p>The following section is specific to the MTA plugin configuration that you need configure in <code>app-config.yaml</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">mta</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://mta-openshift-mta.apps.cluster-xvdzv.dynamic.redhatworkshops.io</span>
+<span class="w">  </span><span class="nt">backendPluginVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.3.0&quot;</span>
+<span class="w">  </span><span class="nt">backendPluginRoot</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/opt/app-root/src/dynamic-plugins-root/backstage-community-backstage-plugin-mta-backend-0.3.0&quot;</span>
+<span class="w">  </span><span class="nt">providerAuth</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mta</span>
+<span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage-provider-secret</span>
+<span class="w">    </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backstage-provider</span>
+
+<span class="nt">dynamicPlugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">frontend</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">ianbolton.backstage-plugin-mta-frontend</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">entityTabs</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mta</span>
+<span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA</span>
+<span class="w">          </span><span class="nt">mountPoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entity.page.mta</span>
+<span class="w">      </span><span class="nt">mountPoints</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entity.page.mta/cards</span>
+<span class="w">          </span><span class="nt">importName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EntityMTAContent</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">layout</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">gridColumn</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">lg</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;span</span><span class="nv"> </span><span class="s">12&#39;</span>
+<span class="w">                </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;span</span><span class="nv"> </span><span class="s">8&#39;</span>
+<span class="w">                </span><span class="nt">xs</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;span</span><span class="nv"> </span><span class="s">6&#39;</span>
+<span class="w">            </span><span class="nt">if</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">allOf</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">isKind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component</span><span class="w"> </span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">isType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+</code></pre></div>
+<hr />
+<h2 id="mta-plugin-setup-script-for-keycloak">MTA Plugin Setup Script for Keycloak<a class="headerlink" href="#mta-plugin-setup-script-for-keycloak" title="Permanent link">&para;</a></h2>
+<p>Use the following script to configure the <code>backstage-provider</code> client and assign necessary roles/scopes.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+# Variables
+KEYCLOAK_URL=$(oc get route mta -n openshift-mta -o jsonpath=&#39;{.spec.host}&#39;)
+KEYCLOAK_URL=&quot;https://${KEYCLOAK_URL}/auth&quot;
+echo &quot;Using Keycloak URL: $KEYCLOAK_URL&quot;
+
+MASTER_REALM=&quot;master&quot;
+CLIENT_ID=&quot;admin-cli&quot;
+USERNAME=&quot;admin&quot;
+MTA_REALM=&quot;mta&quot;
+
+# Fetch the encoded password from the secret
+ENCODED_PASSWORD=$(oc get secret credential-mta-rhsso -n openshift-mta -o jsonpath=&#39;{.data.ADMIN_PASSWORD}&#39;)
+echo &quot;Encoded Password: $ENCODED_PASSWORD&quot;
+
+# Decode the password
+PASSWORD=$(echo $ENCODED_PASSWORD | base64 --decode)
+echo &quot;Decoded Password: $PASSWORD&quot;
+
+# Obtain access token using the decoded password
+TOKEN=$(curl -s -X POST &quot;$KEYCLOAK_URL/realms/$MASTER_REALM/protocol/openid-connect/token&quot; \
+  -d &quot;client_id=$CLIENT_ID&quot; \
+  -d &quot;username=$USERNAME&quot; \
+  -d &quot;password=$PASSWORD&quot; \
+  -d &quot;grant_type=password&quot; | jq -r &#39;.access_token&#39;)
+echo &quot;Access Token: $TOKEN&quot;
+
+# Define new client JSON
+NEW_CLIENT_JSON=$(cat &lt;&lt;EOF
+{
+  &quot;clientId&quot;: &quot;backstage-provider&quot;,
+  &quot;enabled&quot;: true,
+  &quot;secret&quot;: &quot;backstage-provider-secret&quot;,
+  &quot;redirectUris&quot;: [
+    &quot;*&quot;
+  ],
+  &quot;webOrigins&quot;: [],
+  &quot;protocol&quot;: &quot;openid-connect&quot;,
+  &quot;attributes&quot;: {
+    &quot;access.token.lifespan&quot;: &quot;900&quot;
+  },
+  &quot;publicClient&quot;: false,
+  &quot;bearerOnly&quot;: false,
+  &quot;consentRequired&quot;: false,
+  &quot;standardFlowEnabled&quot;: true,
+  &quot;implicitFlowEnabled&quot;: false,
+  &quot;directAccessGrantsEnabled&quot;: true,
+  &quot;serviceAccountsEnabled&quot;: true
+}
+EOF
+)
+
+# Create the new client
+CREATE_RESPONSE=$(curl -s -X POST &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/clients&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &quot;$NEW_CLIENT_JSON&quot;)
+echo &quot;Create Client Response: $CREATE_RESPONSE&quot;
+
+# Get the client ID dynamically
+CLIENT_UUID=$(curl -s -X GET &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/clients&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot; | jq -r &#39;.[] | select(.clientId==&quot;backstage-provider&quot;) | .id&#39;)
+echo &quot;Client UUID: $CLIENT_UUID&quot;
+
+# Fetch client details using the client UUID
+CLIENT_DETAILS=$(curl -s -X GET &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/clients/$CLIENT_UUID&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot;)
+echo &quot;Client Details: $CLIENT_DETAILS&quot;
+
+# Fetch service account user ID for the client
+SERVICE_ACCOUNT_USER_ID=$(curl -s -X GET &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/clients/$CLIENT_UUID/service-account-user&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot; | jq -r &#39;.id&#39;)
+echo &quot;Service Account User ID: $SERVICE_ACCOUNT_USER_ID&quot;
+
+# Fetch role IDs
+TACKLE_ADMIN_ROLE_ID=$(curl -s -X GET &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/roles/tackle-admin&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; | jq -r &#39;.id&#39;)
+echo &quot;Tackle Admin Role ID: $TACKLE_ADMIN_ROLE_ID&quot;
+
+DEFAULT_ROLES_MTA_ID=$(curl -s -X GET &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/roles/default-roles-mta&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; | jq -r &#39;.id&#39;)
+echo &quot;Default Roles MTA ID: $DEFAULT_ROLES_MTA_ID&quot;
+
+# Prepare role assignment JSON using the fetched IDs
+ASSIGN_ROLES_PAYLOAD=$(cat &lt;&lt;EOF
+[
+  {
+    &quot;id&quot;: &quot;$TACKLE_ADMIN_ROLE_ID&quot;,
+    &quot;name&quot;: &quot;tackle-admin&quot;
+  },
+  {
+    &quot;id&quot;: &quot;$DEFAULT_ROLES_MTA_ID&quot;,
+    &quot;name&quot;: &quot;default-roles-mta&quot;
+  }
+]
+EOF
+)
+echo &quot;Assign Roles Payload: $ASSIGN_ROLES_PAYLOAD&quot;
+
+
+# Assign roles to the service account
+ASSIGN_ROLES_RESPONSE=$(curl -s -X POST &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/users/$SERVICE_ACCOUNT_USER_ID/role-mappings/realm&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &quot;$ASSIGN_ROLES_PAYLOAD&quot;)
+echo &quot;Assign Roles Response: $ASSIGN_ROLES_RESPONSE&quot;
+
+echo &quot;Roles assigned to the service account of client &#39;backstage-provider&#39;.&quot;
+
+
+# Fetch all client scopes
+CLIENT_SCOPES=$(curl -s &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/client-scopes&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot;)
+
+# Define desired scopes
+DESIRABLE_SCOPES=(
+  &quot;acr&quot; &quot;addons:delete&quot; &quot;addons:get&quot; &quot;addons:post&quot; &quot;addons:put&quot; &quot;address&quot;
+  &quot;adoptionplans:post&quot; &quot;analyses:delete&quot; &quot;analyses:get&quot; &quot;analyses:post&quot; &quot;analyses:put&quot;
+  &quot;applications.analyses:delete&quot; &quot;applications.analyses:get&quot; &quot;applications.analyses:post&quot; &quot;applications.analyses:put&quot;
+  &quot;applications.assessments:get&quot; &quot;applications.assessments:post&quot; &quot;applications.bucket:delete&quot; &quot;applications.bucket:get&quot;
+  &quot;applications.bucket:post&quot; &quot;applications.bucket:put&quot; &quot;applications.facts:delete&quot; &quot;applications.facts:get&quot;
+  &quot;applications.facts:post&quot; &quot;applications.facts:put&quot; &quot;applications.stakeholders:put&quot; &quot;applications.tags:delete&quot;
+  &quot;applications.tags:get&quot; &quot;applications.tags:post&quot; &quot;applications.tags:put&quot; &quot;applications:delete&quot; &quot;applications:get&quot;
+  &quot;applications:post&quot; &quot;applications:put&quot; &quot;archetypes.assessments:get&quot; &quot;archetypes.assessments:post&quot;
+  &quot;archetypes:delete&quot; &quot;archetypes:get&quot; &quot;archetypes:post&quot; &quot;archetypes:put&quot; &quot;assessments:delete&quot; &quot;assessments:get&quot;
+  &quot;assessments:post&quot; &quot;assessments:put&quot; &quot;buckets:delete&quot; &quot;buckets:get&quot; &quot;buckets:post&quot; &quot;buckets:put&quot;
+  &quot;businessservices:delete&quot; &quot;businessservices:get&quot; &quot;businessservices:post&quot; &quot;businessservices:put&quot; &quot;cache:delete&quot;
+  &quot;cache:get&quot; &quot;dependencies:delete&quot; &quot;dependencies:get&quot; &quot;dependencies:post&quot; &quot;dependencies:put&quot; &quot;email&quot;
+  &quot;files:delete&quot; &quot;files:get&quot; &quot;files:post&quot; &quot;files:put&quot; &quot;identities:delete&quot; &quot;identities:get&quot; &quot;identities:post&quot;
+  &quot;identities:put&quot; &quot;imports:delete&quot; &quot;imports:get&quot; &quot;imports:post&quot; &quot;imports:put&quot; &quot;jobfunctions:delete&quot;
+  &quot;jobfunctions:get&quot; &quot;jobfunctions:post&quot; &quot;jobfunctions:put&quot; &quot;microprofile-jwt&quot; &quot;migrationwaves:delete&quot;
+  &quot;migrationwaves:get&quot; &quot;migrationwaves:post&quot; &quot;migrationwaves:put&quot; &quot;offline_access&quot; &quot;phone&quot; &quot;profile&quot;
+  &quot;proxies:delete&quot; &quot;proxies:get&quot; &quot;proxies:post&quot; &quot;proxies:put&quot; &quot;questionnaires:delete&quot; &quot;questionnaires:get&quot;
+  &quot;questionnaires:post&quot; &quot;questionnaires:put&quot; &quot;reviews:delete&quot; &quot;reviews:get&quot; &quot;reviews:post&quot; &quot;reviews:put&quot;
+  &quot;roles&quot; &quot;rulesets:delete&quot; &quot;rulesets:get&quot; &quot;rulesets:post&quot; &quot;rulesets:put&quot; &quot;settings:delete&quot; &quot;settings:get&quot;
+  &quot;settings:post&quot; &quot;settings:put&quot; &quot;stakeholdergroups:delete&quot; &quot;stakeholdergroups:get&quot; &quot;stakeholdergroups:post&quot;
+  &quot;stakeholdergroups:put&quot; &quot;stakeholders:delete&quot; &quot;stakeholders:get&quot; &quot;stakeholders:post&quot; &quot;stakeholders:put&quot;
+  &quot;tagcategories:delete&quot; &quot;tagcategories:get&quot; &quot;tagcategories:post&quot; &quot;tagcategories:put&quot; &quot;tags:delete&quot; &quot;tags:get&quot;
+  &quot;tags:post&quot; &quot;tags:put&quot; &quot;targets:delete&quot; &quot;targets:get&quot; &quot;targets:post&quot; &quot;targets:put&quot; &quot;tasks.bucket:delete&quot;
+  &quot;tasks.bucket:get&quot; &quot;tasks.bucket:post&quot; &quot;tasks.bucket:put&quot; &quot;tasks:delete&quot; &quot;tasks:get&quot; &quot;tasks:post&quot;
+  &quot;tasks:put&quot; &quot;tickets:delete&quot; &quot;tickets:get&quot; &quot;tickets:post&quot; &quot;tickets:put&quot; &quot;trackers:delete&quot; &quot;trackers:get&quot;
+  &quot;trackers:post&quot; &quot;trackers:put&quot;
+)
+
+
+# Find the IDs of the desired scopes and store them in a string
+SCOPE_IDS=&quot;&quot;
+for SCOPE_NAME in &quot;${DESIRABLE_SCOPES[@]}&quot;; do
+  SCOPE_ID=$(echo $CLIENT_SCOPES | jq -r --arg SCOPE_NAME &quot;$SCOPE_NAME&quot; &#39;.[] | select(.name == $SCOPE_NAME) | .id&#39;)
+  if [ -n &quot;$SCOPE_ID&quot; ]; then
+    SCOPE_IDS=&quot;$SCOPE_IDS $SCOPE_ID&quot;
+    echo &quot;$SCOPE_NAME ID: $SCOPE_ID&quot;
+  else
+    echo &quot;Error: Scope $SCOPE_NAME not found.&quot;
+  fi
+done
+
+# Client UUID
+CLIENT_UUID=$(curl -s -X GET &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/clients?clientId=backstage-provider&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot; | jq -r &#39;.[0].id&#39;)
+echo &quot;Client UUID: $CLIENT_UUID&quot;
+
+# Assign the found scopes to the client
+for SCOPE_ID in $SCOPE_IDS; do
+  ASSIGN_SCOPE_RESPONSE=$(curl -s -X PUT &quot;$KEYCLOAK_URL/admin/realms/$MTA_REALM/clients/$CLIENT_UUID/default-client-scopes/$SCOPE_ID&quot; \
+    -H &quot;Authorization: Bearer $TOKEN&quot; \
+    -H &quot;Content-Type: application/json&quot;)
+  echo &quot;Assigned Scope ID $SCOPE_ID to client $CLIENT_UUID&quot;
+done
+
+echo &quot;Assigned desired scopes to the client &#39;backstage-provider&#39;.&quot;
+</code></pre></div>
+<hr />
+<h3 id="dynamic-pluginsyaml-configuration"><code>dynamic-plugins.yaml</code> Configuration<a class="headerlink" href="#dynamic-pluginsyaml-configuration" title="Permanent link">&para;</a></h3>
+<h4 id="ensure-your-plugin-list-includes-the-following-entries">Ensure your plugin list includes the following entries:<a class="headerlink" href="#ensure-your-plugin-list-includes-the-following-entries" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">includes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic-plugins.default.yaml</span>
+
+<span class="nt">plugins</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;@backstage-community/backstage-plugin-mta-backend@0.3.0&quot;</span>
+<span class="w">    </span><span class="nt">integrity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sha512-gEmEEa1Fuh+jRqGiLg5JgrBGj+rdRxohnGuIcXb6iTuv2kG0gqkLHu/U1smm+rdBZ78h8lnbrCsEMPKwvjWs+A==</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;@ianbolton/backstage-plugin-mta-frontend@0.1.8&quot;</span>
+<span class="w">    </span><span class="nt">integrity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sha512-OIzO+6HMAv78sN4a6LjB928AX0StJXY3PlhkXJRt/Er+AO+2m2MGvTkS0QzZGvoBoquwQjV+s+CFWDnhrGCAAQ==</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;@backstage-community/backstage-plugin-catalog-backend-module-mta-entity-provider@0.2.0&quot;</span>
+<span class="w">    </span><span class="nt">integrity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sha512-M2s8SN3/tgav+1q1RWVgxAA0V/bRFeT4GesMMWh7/WpFcrqAe65fUJ1YrTPeDavtjW27YE/RZCjwdM9xtPoc5w==</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">disabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;@backstage-community/backstage-plugin-scaffolder-backend-module-mta@0.3.0&quot;</span>
+<span class="w">    </span><span class="nt">integrity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sha512-dGdjnBGmmMtvQ46LF1QUzlu+C1fnLyI0iljTJfwToOiZOxfb1vl/1gsPfT74kLSit1fYLPm8N+weS0i5+NqS8A==</span>
+</code></pre></div>
+<hr />
+<h2 id="using-mta-in-red-hat-developer-hub">Using MTA in Red Hat Developer Hub<a class="headerlink" href="#using-mta-in-red-hat-developer-hub" title="Permanent link">&para;</a></h2>
+<h3 id="1-access-developer-hub">1. Access Developer Hub<a class="headerlink" href="#1-access-developer-hub" title="Permanent link">&para;</a></h3>
+<p>Navigate to your running instance of <strong>Red Hat Developer Hub</strong> in the browser.</p>
+<p><img alt="Access Developer Hub" src="https://github.com/user-attachments/assets/f79d7c2a-9e94-4e40-ab13-4469646d89c0" /></p>
+<hr />
+<h3 id="2-register-a-template">2. Register a Template<a class="headerlink" href="#2-register-a-template" title="Permanent link">&para;</a></h3>
+<p>On the RHDH UI , Click register existing component to import MTA template available at <a href="https://github.com/backstage/community-plugins/blob/main/workspaces/mta/create-application-template.yaml">https://github.com/backstage/community-plugins/blob/main/workspaces/mta/create-application-template.yaml</a> </p>
+<p><img alt="Register Template" src="https://github.com/user-attachments/assets/60d552a6-c7bb-4f41-818f-c21b3c606ed6" /></p>
+<hr />
+<h3 id="3-verify-template-in-catalog">3. Verify Template in Catalog<a class="headerlink" href="#3-verify-template-in-catalog" title="Permanent link">&para;</a></h3>
+<p>Click <strong>Catalog</strong> and look for the registered template appears as an entity as shown below</p>
+<p><img alt="Catalog Entry" src="https://github.com/user-attachments/assets/ed6bcb3d-9add-402f-bb80-efcaeb5d7dd3" /></p>
+<hr />
+<h3 id="4-create-an-mta-application">4. Create an MTA Application<a class="headerlink" href="#4-create-an-mta-application" title="Permanent link">&para;</a></h3>
+<p>Choose the template Onboard Application to MTA and perform as shown in the following screenshots.</p>
+<p><img alt="Step 1" src="https://github.com/user-attachments/assets/1319ef91-a256-40a4-88b5-2cd0118722dd" /></p>
+<ul>
+<li>Add the name of the application to be onboarded to MTA</li>
+</ul>
+<p><img alt="Step 2" src="https://github.com/user-attachments/assets/c05e6e96-01a3-46e7-9fd5-a785af3f1554" /></p>
+<ul>
+<li>Fill Application Metadata</li>
+</ul>
+<p><img alt="Step 3" src="https://github.com/user-attachments/assets/917a00eb-a542-4b89-911e-b82b3385fcb9" /></p>
+<ul>
+<li>Confirm and Submit</li>
+</ul>
+<p><img alt="Step 4" src="https://github.com/user-attachments/assets/6459e10d-9d63-4ae5-8e0d-a94bd7a9cbab" /></p>
+<hr />
+<h3 id="5-run-mta-analysis">5. Run MTA Analysis<a class="headerlink" href="#5-run-mta-analysis" title="Permanent link">&para;</a></h3>
+<p>Once the application is created, go to the entity page and launch an MTA analysis.</p>
+<p><img alt="MTA Analysis Start" src="https://github.com/user-attachments/assets/f4e87581-1eb9-4f7c-929b-d23b94458aa7" /></p>
+<hr />
+<h3 id="6-check-analysis-status-in-rhdh">6. Check Analysis Status in RHDH<a class="headerlink" href="#6-check-analysis-status-in-rhdh" title="Permanent link">&para;</a></h3>
+<p>Track the analysis progress directly within the Developer Hub UI under the <strong>MTA tab</strong>.</p>
+<p><img alt="RHDH MTA Status" src="https://github.com/user-attachments/assets/3586774f-15f9-43e7-b683-4fe13a719fb2" /></p>
+<hr />
+<h3 id="7-confirm-in-mta-web-console">7. Confirm in MTA Web Console<a class="headerlink" href="#7-confirm-in-mta-web-console" title="Permanent link">&para;</a></h3>
+<p>Optionally, verify the same analysis from the <strong>MTA UI</strong> running on OpenShift.</p>
+<p><img alt="MTA UI Status" src="https://github.com/user-attachments/assets/5aba2bca-10b6-43c8-b880-5bcf5a3ea9ee" /></p>
+<hr />
+<h3 id="8-final-status-in-rhdh">8. Final Status in RHDH<a class="headerlink" href="#8-final-status-in-rhdh" title="Permanent link">&para;</a></h3>
+<p>After completion, return to the Developer Hub entity page to view final analysis output and recommendations.</p>
+<p><img alt="Final RHDH View" src="https://github.com/user-attachments/assets/195cc34f-6b54-49a2-9332-033ac371a936" /></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rrbanda" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
