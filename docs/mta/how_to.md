@@ -294,7 +294,7 @@ On the RHDH UI , Click register existing component to import MTA template availa
 
 ### 3. Verify Template in Catalog
 
-Go to **Catalog** and check that the registered template appears as an entity.
+Click **Catalog** and look for the registered template appears as an entity as shown below
 
 ![Catalog Entry](https://github.com/user-attachments/assets/ed6bcb3d-9add-402f-bb80-efcaeb5d7dd3)
 
